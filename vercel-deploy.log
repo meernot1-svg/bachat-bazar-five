@@ -1,21 +1,24 @@
 Vercel CLI 54.21.1 (Node.js 24.18.0)
 Retrieving project…
 Deploying meernot1-3153s-projects/bachat-bazar-five
-Uploading [--------------------] (0.0B/111B)
-Uploading [====================] (111.0B/111B)
-  Inspect         https://vercel.com/meernot1-3153s-projects/bachat-bazar-five/G2zUpLE64VQMkSgyHDREeUid2KTR
-  Production      https://bachat-bazar-five-7pjtu41j2-meernot1-3153s-projects.vercel.app
-https://bachat-bazar-five-7pjtu41j2-meernot1-3153s-projects.vercel.appBuilding…
-Building…
+Uploading [--------------------] (0.0B/407.1KB)
+Uploading [=====---------------] (112.0KB/407.1KB)
+Uploading [==========----------] (208.0KB/407.1KB)
+Uploading [===============-----] (320.0KB/407.1KB)
+Uploading [====================] (407.1KB/407.1KB)
+  Inspect         https://vercel.com/meernot1-3153s-projects/bachat-bazar-five/2HC79fbFTmuKbqN8XzmwrvzZf4zo
+  Production      https://bachat-bazar-five-j2zm3mo56-meernot1-3153s-projects.vercel.app
+https://bachat-bazar-five-j2zm3mo56-meernot1-3153s-projects.vercel.appBuilding…
 Running build in Washington, D.C., USA (East) – iad1
 Build machine configuration: 2 cores, 8 GB
 Retrieving list of deployment files...
-Downloading 1489 deployment files...
-Restored build cache from previous deployment (8p1iPEz36JwGGW1JgLdH22XmKfcL)
+Retrieving list of deployment files...
+Downloading 1491 deployment files...
+Restored build cache from previous deployment (G2zUpLE64VQMkSgyHDREeUid2KTR)
 Running "vercel build"
 Vercel CLI 54.21.1
 Running "install" command: `npm install`...
-removed 1 package, and audited 830 packages in 11s
+up to date, audited 830 packages in 11s
 284 packages are looking for funding
 run `npm fund` for details
 9 moderate severity vulnerabilities
@@ -28,15 +31,15 @@ Applying modifyConfig from Vercel
 ▲ Next.js 16.2.10 (Turbopack)
 - Environments: .env
 Creating an optimized production build ...
-✓ Compiled successfully in 7.9s
+✓ Compiled successfully in 6.9s
 Skipping validation of types
-Finished TypeScript config validation in 19ms ...
+Finished TypeScript config validation in 10ms ...
 Collecting page data using 1 worker ...
 Generating static pages using 1 worker (0/6) ...
 Generating static pages using 1 worker (1/6)
 Generating static pages using 1 worker (2/6)
 Generating static pages using 1 worker (4/6)
-✓ Generating static pages using 1 worker (6/6) in 188ms
+✓ Generating static pages using 1 worker (6/6) in 166ms
 Finalizing page optimization ...
 Running onBuildComplete from Vercel
 Detected .env file, it is strongly recommended to use Vercel's env handling instead
@@ -48,10 +51,12 @@ Route (app)
 └ ○ /sitemap.xml
 ○  (Static)   prerendered as static content
 ƒ  (Dynamic)  server-rendered on demand
-Build Completed in /vercel/output [23s]
+Build Completed in /vercel/output [21s]
 Deploying outputs...
-[2K[1A[2K[G  Production      https://bachat-bazar-five-7pjtu41j2-meernot1-3153s-projects.vercel.app
+Deployment completed
+Creating build cache...
+[2K[1A[2K[G  Production      https://bachat-bazar-five-j2zm3mo56-meernot1-3153s-projects.vercel.app
 Completing…
 ▲ Aliased         https://bachat-bazar-five-ten.vercel.app
 
-✓ Ready in 44s
+✓ Ready in 59s
