@@ -1,0 +1,11 @@
+{
+  "[project]/src/components/bachat/BachatBazarApp.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/bachat/BachatBazarApp.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/src_lib_5b8f3455._.js",
+      "static/chunks/src_components_bd9e6de7._.js",
+      "static/chunks/node_modules_769706cc._.js",
+      "static/chunks/src_components_bachat_BachatBazarApp_tsx_46aeac99._.js"
+    ]
+  }
+}
