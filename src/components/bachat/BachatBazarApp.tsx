@@ -132,7 +132,19 @@ function ProductCard({ product, onQuickView }: { product: Product; onQuickView: 
   return (
     <div className="product-card animate-cardFadeUp group bg-card rounded-xl border overflow-hidden cursor-pointer" onClick={handleClick}>
       <div className="relative aspect-square overflow-hidden bg-muted">
-        <ProductImage src={product.images[0]} alt={product.name} seed={product.imageId} className="product-img w-full h-full object-cover" />
+        {/* Show 2nd image on hover for products with multiple images */}
+        {product.images.length > 1 && (
+          <ProductImage src={product.images[1]} alt={product.name} seed={product.imageId} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-[1]" />
+        )}
+        <ProductImage src={product.images[0]} alt={product.name} seed={product.imageId} className="product-img w-full h-full object-cover relative z-[2] group-hover:opacity-0 transition-opacity duration-500" />
+        {/* Image indicator dots */}
+        {product.images.length > 1 && (
+          <div className="absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 flex gap-1 z-10">
+            {product.images.slice(0, 3).map((_, i) => (
+              <span key={i} className={`w-1.5 h-1.5 rounded-full transition-all ${i === 0 ? 'bg-white shadow' : 'bg-white/50'}`} />
+            ))}
+          </div>
+        )}
         {product.badge && <span className="absolute top-1.5 left-1.5 sm:top-2 sm:left-2 bg-gradient-to-r from-[#006233] to-[#00A651] text-white text-[10px] sm:text-xs font-bold px-1.5 sm:px-2.5 py-0.5 rounded-full shadow">{product.badge}</span>}
         {product.isNew && <span className="absolute top-1.5 right-8 sm:top-2 sm:right-12 bg-[#C5A028] text-white text-[10px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 rounded-full shadow">NEW</span>}
         <div className="absolute bottom-1.5 left-1.5 right-1.5 sm:bottom-2 sm:left-2 sm:right-2"><button onClick={(e) => { e.preventDefault(); e.stopPropagation(); onQuickView(product); }} className="quick-view-btn w-full bg-white/95 dark:bg-zinc-800/95 backdrop-blur text-[10px] sm:text-xs font-semibold py-1 sm:py-1.5 rounded-lg hover:bg-[#006233] hover:text-white transition flex items-center justify-center gap-1 shadow"><Eye size={12} className="sm:w-[14px]"/>Quick View</button></div>
@@ -753,6 +765,43 @@ const navLinks = [
   { href: '#/contact', label: 'Contact' },
 ];
 
+// ─── QUICK VIEW CONTENT (with image gallery) ───
+function QuickViewContent({ product, onNavigate, onClose }: { product: Product; onNavigate: (h: string) => void; onClose: () => void }) {
+  const s = useStore(); const { toast } = useToast();
+  const [imgIdx, setImgIdx] = useState(0);
+  return (
+    <div className="flex flex-col md:flex-row gap-4 sm:gap-6">
+      <div className="md:w-1/2 space-y-2">
+        <div className="aspect-square rounded-xl overflow-hidden bg-muted">
+          <ProductImage src={product.images[imgIdx] || product.images[0]} alt={product.name} seed={product.imageId} className="w-full h-full object-cover"/>
+        </div>
+        {product.images.length > 1 && (
+          <div className="flex gap-1.5 overflow-x-auto no-scrollbar">
+            {product.images.map((img, i) => (
+              <button key={i} onClick={() => setImgIdx(i)} className={`shrink-0 w-14 h-14 rounded-lg overflow-hidden border-2 transition ${i === imgIdx ? 'border-[#006233]' : 'border-transparent opacity-60 hover:opacity-100'}`}>
+                <ProductImage src={img} alt="" className="w-full h-full object-cover"/>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="md:w-1/2 space-y-3">
+        <p className="text-sm text-[#C5A028] font-semibold" style={FB}>{product.brand}</p>
+        <h3 className="text-xl font-bold" style={FH}>{product.name}</h3>
+        <div className="flex items-center gap-2"><StarRating rating={product.rating}/><span className="text-xs text-muted-foreground">({product.reviews})</span></div>
+        <PriceDisplay price={product.price} oldPrice={product.oldPrice}/>
+        <p className="text-sm text-muted-foreground line-clamp-3">{product.description}</p>
+        <div className="flex gap-2 pt-2">
+          <Button className="flex-1 bg-gradient-to-r from-[#006233] to-[#00A651] text-white" onClick={() => { s.addToCart(product.id); toast({ title: 'Added to cart' }); }}>
+            <ShoppingCart size={14} className="mr-1"/>Add to Cart
+          </Button>
+          <Button variant="outline" onClick={() => { onClose(); onNavigate(makeHash('product', String(product.id))); }}>View Details</Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function BachatBazarApp() {
   const s = useStore(); const { toast } = useToast();
   const [route, setRoute] = useState<RouteInfo>(() => { if (typeof window !== 'undefined') return parseHash(window.location.hash); return { view: '', id: '', query: {} }; });
@@ -877,7 +926,7 @@ export default function BachatBazarApp() {
       </nav></SheetContent></Sheet>
 
       <Dialog open={!!quickView} onOpenChange={() => setQuickView(null)}><DialogContent className="max-w-2xl"><DialogHeader><DialogTitle className="sr-only">Quick View</DialogTitle><DialogDescription className="sr-only">Product quick view</DialogDescription></DialogHeader>
-      {quickView && (<div className="flex flex-col md:flex-row gap-6"><div className="md:w-1/2 aspect-square rounded-xl overflow-hidden bg-muted"><ProductImage src={quickView.images[0]} alt={quickView.name} seed={quickView.imageId} className="w-full h-full object-cover"/></div><div className="md:w-1/2 space-y-3"><p className="text-sm text-[#C5A028] font-semibold" style={FB}>{quickView.brand}</p><h3 className="text-xl font-bold" style={FH}>{quickView.name}</h3><div className="flex items-center gap-2"><StarRating rating={quickView.rating}/><span className="text-xs text-muted-foreground">({quickView.reviews})</span></div><PriceDisplay price={quickView.price} oldPrice={quickView.oldPrice}/><p className="text-sm text-muted-foreground line-clamp-3">{quickView.description}</p><div className="flex gap-2 pt-2"><Button className="flex-1 bg-gradient-to-r from-[#006233] to-[#00A651] text-white" onClick={() => { s.addToCart(quickView.id); toast({ title: 'Added to cart' }); }}><ShoppingCart size={14} className="mr-1"/>Add to Cart</Button><Button variant="outline" onClick={() => { setQuickView(null); navigate(makeHash('product', String(quickView.id))); }}>View Details</Button></div></div></div>)}</DialogContent></Dialog>
+      {quickView && (<QuickViewContent product={quickView} onNavigate={navigate} onClose={() => setQuickView(null)}/>)}</DialogContent></Dialog>
 
       <Dialog open={authOpen} onOpenChange={setAuthOpen}><DialogContent className="max-w-sm"><DialogHeader><DialogTitle style={FH}>{authMode === 'login' ? 'Sign In' : 'Create Account'}</DialogTitle><DialogDescription>{authMode === 'login' ? 'Welcome back to Bachat Bazar' : 'Join Bachat Bazar today'}</DialogDescription></DialogHeader>
       <div className="space-y-3">{authMode === 'register' && <div><Label>Name</Label><Input value={authName} onChange={e => setAuthName(e.target.value)} placeholder="Muhammad Ali"/></div>}<div><Label>Email</Label><Input type="email" value={authEmail} onChange={e => setAuthEmail(e.target.value)} placeholder="you@example.com"/></div><Button className="w-full bg-gradient-to-r from-[#006233] to-[#00A651] text-white font-bold" onClick={handleAuth}>{authMode === 'login' ? 'Sign In' : 'Create Account'}</Button><p className="text-center text-xs text-muted-foreground">{authMode === 'login' ? "Don't have an account? " : 'Already have an account? '}<button className="text-[#006233] dark:text-[#00A651] font-medium" onClick={() => setAuthMode(authMode === 'login' ? 'register' : 'login')}>{authMode === 'login' ? 'Sign Up' : 'Sign In'}</button></p></div></DialogContent></Dialog>

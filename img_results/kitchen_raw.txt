@@ -1,0 +1,116 @@
+🚀 Initializing Z-AI SDK...
+🔎 Searching images: "kitchen cookware pots pans"
+✅ Got 15 images
+{
+  "success": true,
+  "query": "kitchen cookware pots pans",
+  "count": 15,
+  "ranked": false,
+  "results": [
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/be19ab173198.jpg",
+      "caption": "",
+      "source": "The Home Depot",
+      "original_width": "1440px",
+      "original_height": "810px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/73eff1847540.jpg",
+      "caption": "",
+      "source": "T-Fal",
+      "original_width": "1000px",
+      "original_height": "1000px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/6fe6824c4a46.jpg",
+      "caption": "",
+      "source": "Amazon.com",
+      "original_width": "894px",
+      "original_height": "894px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/b9d121ff5eba.jpg",
+      "caption": "",
+      "source": "Henckels",
+      "original_width": "1920px",
+      "original_height": "1280px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/fbe6b13aa45a.jpg",
+      "caption": "",
+      "source": "Imarku",
+      "original_width": "2000px",
+      "original_height": "2000px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/6aa734e2b481.jpg",
+      "caption": "",
+      "source": "Bed Bath & Beyond",
+      "original_width": "2000px",
+      "original_height": "2000px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/4c33ff66c6d1.jpg",
+      "caption": "",
+      "source": "Cook & Pan",
+      "original_width": "1200px",
+      "original_height": "1200px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/8da7c632c837.jpg",
+      "caption": "",
+      "source": "Borough Kitchen",
+      "original_width": "1440px",
+      "original_height": "1440px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/deb2d750e6dc.jpg",
+      "caption": "",
+      "source": "GreenPan",
+      "original_width": "1200px",
+      "original_height": "1200px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/fe2c43cfb774.jpg",
+      "caption": "",
+      "source": "Cooks Standard",
+      "original_width": "2000px",
+      "original_height": "2000px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/a21aa79eabc0.jpg",
+      "caption": "",
+      "source": "Nuovva",
+      "original_width": "1200px",
+      "original_height": "1200px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/ab44f381c14e.jpg",
+      "caption": "",
+      "source": "Granitestone.com",
+      "original_width": "2000px",
+      "original_height": "2000px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/842da28ac61d.jpg",
+      "caption": "",
+      "source": "Cook & Pan",
+      "original_width": "2160px",
+      "original_height": "2160px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/7b572f185c24.jpg",
+      "caption": "",
+      "source": "Kikcoin Kitchen",
+      "original_width": "1600px",
+      "original_height": "1600px"
+    },
+    {
+      "original_url": "https://sfile.chatglm.cn/images-ppt/5d49ad98175e.png",
+      "caption": "",
+      "source": "eBay",
+      "original_width": "1200px",
+      "original_height": "1186px"
+    }
+  ]
+}
