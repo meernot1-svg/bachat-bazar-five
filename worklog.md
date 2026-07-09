@@ -112,3 +112,32 @@ Stage Summary:
 - Cart bug FIXED: New products now default to 50 stock
 - Checkout FIXED: Full delivery address form with validation before order placement
 - Mobile responsive IMPROVED: Fixed CSS selector specificity issues
+
+---
+Task ID: add-50-products-accurate-images
+Agent: Main Agent
+Task: Add 50 trending products with accurate images from markaz.app and yourmart.pk
+
+Work Log:
+- Confirmed current state: 40 old products with inaccurate images (picsum placeholders, shared URLs)
+- z-ai image-search was rate-limited (429) from previous session
+- Used agent-browser to scrape markaz.app/shop - got 50 products with real images
+- Scraped markaz.app Tech & Tools category - 30 more products with images
+- Scraped yourmart.pk Smart Gadgets - 30 products (some with blank images)
+- Scraped yourmart.pk Personal Care & Beauty - 17 products with images
+- Scraped yourmart.pk Airpods category - 17 products with images
+- Discovered markaz.app URL pattern: product-1.webp, product-2.webp, product-3.webp for multiple images
+- Generated 50 products using Python script (gen_products_v2.py)
+- Replaced entire PRODUCTS array in data.ts with 50 new accurate products
+- Fixed apostrophe issue in Product'sPictures URLs
+- Build verified successfully (0 errors)
+- Pushed to GitHub (4fa6b51)
+
+Stage Summary:
+- 50 products added with real source images from markaz.app and yourmart.pk
+- Categories: 12 Gadgets & Electronics, 14 Beauty & Care, 7 Fashion Accessories, 5 Home & Practical, 3 Apparel, 9 Additional
+- All images are from actual product pages (markaz CDN or yourmart admin CDN)
+- Markaz products have 3 unique images each (product-1/2/3.webp pattern)
+- YourMart products use same image for all 3 slots (accurate but only 1 source available)
+- Prices increased by 50-200 PKR from source prices
+- Build passes, pushed to GitHub for Vercel auto-deploy
