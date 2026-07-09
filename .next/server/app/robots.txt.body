@@ -1,0 +1,12 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin
+
+User-Agent: Googlebot
+Allow: /
+
+User-Agent: Bingbot
+Allow: /
+
+Sitemap: https://bachatbazar.pk/sitemap.xml
