@@ -141,3 +141,27 @@ Stage Summary:
 - YourMart products use same image for all 3 slots (accurate but only 1 source available)
 - Prices increased by 50-200 PKR from source prices
 - Build passes, pushed to GitHub for Vercel auto-deploy
+---
+Task ID: 1
+Agent: Main Agent
+Task: Deploy 50 products to live site and fix duplicate images
+
+Work Log:
+- Confirmed 50 products already in data.ts from previous session
+- Identified 25 products with duplicate images (same URL repeated 3x)
+- Discovered YourMart image timestamp pattern: products uploaded together share same timestamp
+- Built Python script to find additional images via timestamp-based URL discovery
+- Found 3+ images for 17/22 YourMart products using timestamp pattern
+- Used agent-browser to visit YourMart product pages and find Remington product images
+- Fixed P21 Remington with 4 images found via agent-browser
+- Total: 42/50 products (84%) now have 3 unique images
+- Remaining 8 products have only 1 image on source websites (image-search API rate limited)
+- Committed and pushed to GitHub, triggering Vercel auto-deploy
+
+Stage Summary:
+- Site live at https://bachat-bazar-five.vercel.app/ with 50 products
+- 42 products have 3 unique images from markaz.app and yourmart.pk
+- 8 products (P10, P13, P14, P15, P25, P46, P48, P49) have 1 image each
+- All images are accurate and match product names
+- z-ai image-search API was rate-limited throughout, preventing alternative image discovery
+- Remaining 8 products can be fixed when rate limit resets
